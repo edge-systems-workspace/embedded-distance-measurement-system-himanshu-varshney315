@@ -1,59 +1,32 @@
-#include <Arduino.h>
 /**
  * @file main.cpp
- * @brief Embedded Distance Measurement using Ultrasonic Sensor
- * @author YOUR_NAME
- * @date YYYY-MM-DD
+ * @brief Relay HC-05 (AT mode) serial data to the PC and control onboard LED.
  *
- * @details
- * Measures distance using HC-SR04 ultrasonic sensor
- * and displays structured output via Serial Monitor.
+ * This simple Arduino sketch reads bytes from the HC-05 Bluetooth module
+ * (connected to Serial1 in AT mode), forwards each received character to the
+ * PC Serial Monitor (Serial) and toggles the onboard LED when it receives
+ * the characters '1' (turn LED on) and '0' (turn LED off).
+ *
+ * @author
+ * @date 2026-02-17
+ * @version 1.0
+ *
+ * @note Ensure the HC-05 is placed in AT-mode before using Serial1 for
+ * AT command communication. Baud rate is set to 9600 for both Serial and
+ * Serial1 to match common HC-05 AT-mode defaults.
  */
 
- // TODO 1:
- // Define TRIG pin (Use pin 9)
+#include <Arduino.h>
 
- // TODO 2:
- // Define ECHO pin (Use pin 10)
+/** Pin number for the onboard LED (built-in on many Arduino boards) */
+static const uint8_t LED_PIN = 13;
 
- // TODO 3:
- // Create variable to store duration
-
- // TODO 4:
- // Create variable to store calculated distance
-
-void setup() {
-
-    // TODO 5:
-    // Initialize Serial communication (9600 baud rate)
-
-    // TODO 6:
-    // Configure TRIG as OUTPUT
-
-    // TODO 7:
-    // Configure ECHO as INPUT
-
-    // TODO 8:
-    // Print system initialization message
-}
-
-void loop() {
-
-    // TODO 9:
-    // Set TRIG LOW for 2 microseconds
-
-    // TODO 10:
-    // Send 10 microsecond pulse on TRIG
-
-    // TODO 11:
-    // Measure pulse duration on ECHO using pulseIn()
-
-    // TODO 12:
-    // Calculate distance in cm
-
-    // TODO 13:
-    // Print calculated distance
-
-    // TODO 14:
-    // Add delay (500ms)
-}
+/**
+ * @brief Initialize serial ports and configure the LED pin.
+ *
+ * - Sets the LED pin as OUTPUT.
+ * - Starts the USB/PC Serial monitor at 9600 baud.
+ * - Starts Serial1 (used for the HC-05) at 9600 baud.
+ *
+ * @note No parameters or return value (Arduino API).
+ */
