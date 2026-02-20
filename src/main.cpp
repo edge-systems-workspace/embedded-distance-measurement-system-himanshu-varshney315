@@ -7,7 +7,7 @@
  * PC Serial Monitor (Serial) and toggles the onboard LED when it receives
  * the characters '1' (turn LED on) and '0' (turn LED off).
  *
- * @author
+ * @author himanshu
  * @date 2026-02-17
  * @version 1.0
  *
